@@ -1,0 +1,103 @@
+{
+  "spawn_room": "loc.square",
+  "rooms": [
+    {
+      "id": "loc.square",
+      "name": "Village Square",
+      "description": "A cobblestone square with an old stone fountain in the center.",
+      "exits": {
+        "north": "loc.tavern",
+        "east": "loc.alley"
+      },
+      "items": ["item.fountain"],
+      "npcs": ["npc.guard", "npc.merchant"]
+    },
+    {
+      "id": "loc.tavern",
+      "name": "The Rusty Mug",
+      "description": "A smoky tavern smelling of cheap ale and wet dog.",
+      "exits": {
+        "south": "loc.square"
+      },
+      "items": ["item.herbs"],
+      "npcs": []
+    },
+    {
+      "id": "loc.alley",
+      "name": "Dark Alley",
+      "description": "A narrow, damp alley behind the tavern.",
+      "exits": {
+        "west": "loc.square"
+      },
+      "items": [],
+      "npcs": ["npc.goblin"]
+    }
+  ],
+  "items": [
+    {
+      "id": "item.herbs",
+      "name": "Healing Herbs",
+      "description": "A bundle of pungent green herbs that patch up wounds.",
+      "obtainable": true
+    },
+    {
+      "id": "item.fountain",
+      "name": "Stone Fountain",
+      "description": "Too heavy to carry, unless you are an idiot.",
+      "obtainable": false
+    },
+    {
+      "id": "item.gold_coin",
+      "name": "Gold Coin",
+      "description": "A shiny gold coin stamped with a king's face.",
+      "obtainable": true
+    }
+  ],
+  "npcs": [
+    {
+      "id": "npc.guard",
+      "name": "Village Guard",
+      "role": "dialogue",
+      "hp": 100,
+      "damage": 15,
+      "dialogue": "Keep your hands where I can see them, traveler.",
+      "quest_id": null
+    },
+    {
+      "id": "npc.merchant",
+      "name": "Old Merchant",
+      "role": "quest",
+      "hp": 50,
+      "damage": 0,
+      "dialogue": "I need herbs for my rheumatism. Ask me for a QUEST.",
+      "quest_id": "quest.fetch_herbs"
+    },
+    {
+      "id": "npc.goblin",
+      "name": "Angry Goblin",
+      "role": "enemy",
+      "hp": 30,
+      "damage": 10,
+      "dialogue": "Grrrr! Shiny things are mine!",
+      "quest_id": null
+    }
+  ],
+  "quests": [
+    {
+      "id": "quest.fetch_herbs",
+      "description": "Bring Healing Herbs to the Old Merchant.",
+      "type": "fetch",
+      "target_id": "item.herbs",
+      "count": 1,
+      "reward_item_id": "item.gold_coin"
+    },
+    {
+      "id": "quest.kill_goblin",
+      "description": "Defeat the Angry Goblin in the Dark Alley.",
+      "type": "kill",
+      "target_id": "npc.goblin",
+      "count": 1,
+      "reward_item_id": "item.gold_coin"
+    }
+  ]
+}
