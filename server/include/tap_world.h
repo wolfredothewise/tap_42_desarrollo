@@ -2,7 +2,6 @@
 # define TAP_WORLD_H
 
 
-
 # include <stdbool.h>
 # include <stdlib.h>
 # include <string.h>
@@ -105,12 +104,12 @@ t_npc *find_npc_by_id(t_npc *list, const char *id);
 t_room *find_room_by_id(t_room *list, const char *id);
 //parser de entidades y salas static
 
-static bool parse_items(cJSON *items_arr, t_world *world);
+// static bool parse_items(cJSON *items_arr, t_world *world);
 
-static bool parse_npcs(cJSON *npcs_arr, t_world *world);
+// static bool parse_npcs(cJSON *npcs_arr, t_world *world);
 
-static bool parse_quests(cJSON *quests_arr, t_world *world);
+// static bool parse_quests(cJSON *quests_arr, t_world *world);
 
-static bool parse_rooms(cJSON *rooms_arr, t_world *world);
+// static bool parse_rooms(cJSON *rooms_arr, t_world *world);
 
 #endif

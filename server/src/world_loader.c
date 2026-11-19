@@ -56,8 +56,6 @@ t_world *load_world(const char *filepath)
 }
 
 t_item *find_item_by_id(t_item *list, const char *id)
-//Objetivo: Localizar un nodo dentro de una lista enlazada comparando su identificador canónico con id.
-// Retorno: El puntero al nodo encontrado, o NULL si no existe.
 {
     if (!list->id || !id)
         return NULL;
@@ -82,7 +80,7 @@ t_npc *find_npc_by_id(t_npc *list, const char *id)
     }
     return NULL;
 }
-t_room *find_room_by_id(t_room *list, const char *id);
+t_room *find_room_by_id(t_room *list, const char *id)
 {
     if (!list->id || !id)
         return NULL;
@@ -104,5 +102,90 @@ t_room *find_room_by_id(t_room *list, const char *id);
 //  hay cualquier incongruencia en el mapa
 static bool parse_items(cJSON *items_arr, t_world *world)
 {
-    
+    if (!items_arr || !world)
+        return false;
+    cJSON *item_json;
+    cJSON_ArrayForEach(item_json, items_arr)
+    {
+        if (!cJSON_IsObject(item_json))
+            return false;
+
+        cJSON *id = cJSON_GetObjectItem(item_json, "id");
+        cJSON *name = cJSON_GetObjectItem(item_json, "name");
+        cJSON *description = cJSON_GetObjectItem(item_json, "description");
+        cJSON *obtainable = cJSON_GetObjectItem(item_json, "obtainable");
+
+        if (!cJSON_IsString(id) || !cJSON_IsString(name) ||
+         !cJSON_IsString(description) || !cJSON_IsBool(obtainable))
+            return false;
+        
+        t_item *res = calloc(1, sizeof(t_item));
+        if (!res)
+            return false;
+        res->id = strdup(id->valuestring);
+        res->name = strdup(name->valuestring);
+        res->description = strdup(description->valuestring);
+        res->obtainable = cJSON_IsTrue(obtainable);
+
+        if(!res->id || !res->name || !res->description)
+        {
+            free_items(res);
+            return false;
+        }  
+        item_add_back(&world->item_catalog, res);
+    }
+
+    return true;
+}
+
+static bool parse_npcs(cJSON *npcs_arr, t_world *world)
+{
+    if (!npcs_arr || !world)
+        return false;
+    cJSON *npc_json;
+    cJSON_ArrayForEach(npc_json, npcs_arr)
+    {
+        if (!cJSON_IsObject(npc_json))
+            return false;
+
+        cJSON *id = cJSON_GetObjectItem(npc_json, "id");
+        cJSON *name = cJSON_GetObjectItem(npc_json, "name");
+        cJSON *role = cJSON_GetObjectItem(npc_json, "role");
+        cJSON *hp = cJSON_GetObjectItem(npc_json, "hp");
+        cJSON *max_hp = cJSON_GetObjectItem(npc_json, "max_hp");
+        cJSON *damage = cJSON_GetObjectItem(npc_json, "damage");
+        cJSON *dialogue = cJSON_GetObjectItem(npc_json, "dialogue");
+        cJSON *quest_id = cJSON_GetObjectItem(npc_json, "quest_id");
+
+
+        if (!cJSON_IsString(id) || !cJSON_IsString(name) ||
+         !cJSON_IsString(role) ||  !cJSON_IsString(dialogue) ||
+          !cJSON_IsString(quest_id) || !cJSON_IsNumber(hp) ||
+           !cJSON_IsNumber(max_hp) || !cJSON_IsNumber(damage))
+            return false;
+        
+        t_npc *res = calloc(1, sizeof(t_npc));
+        if (!res)
+            return false;
+        res->id = strdup(id->valuestring);
+        res->name = strdup(name->valuestring);
+        res->role = strdup(role->valuestring);
+        res->hp = hp->valueint;
+        res->max_hp = max_hp->valueint;
+        res->damage = damage->valueint;
+        res->dialogue = strdup(dialogue->valuestring);
+        res->quest_id = strdup(quest_id->valuestring);
+
+        if(!res->id || !res->name ||
+        !res->role || !res->dialogue ||
+        !res->quest_id)
+        {
+            free_npcs(res);
+            return false;
+        }
+        
+        npc_add_back(&world->npc_catalog, res);
+    }
+
+    return true;
 }
