@@ -265,3 +265,53 @@ void room_add_back(t_room **head, t_room *new)
     }
     return;
 }
+
+t_item *find_item_by_id(t_item *list, const char *id)
+{
+    if (!list || !list->id || !id)
+        return NULL;
+    while(list)
+    {
+        if (strcmp(list->id, id) == 0)
+                return list;
+        list = list->next;
+    }
+    return NULL;
+}
+
+t_npc *find_npc_by_id(t_npc *list, const char *id)
+{
+    if (!list || !list->id || !id)
+        return NULL;
+    while(list)
+    {
+        if (strcmp(list->id, id) == 0)
+                return list;
+        list = list->next;
+    }
+    return NULL;
+}
+t_room *find_room_by_id(t_room *list, const char *id)
+{
+    if (!list || !list->id || !id)
+        return NULL;
+    while(list)
+    {
+        if (strcmp(list->id, id) == 0)
+                return list;
+        list = list->next;
+    }
+    return NULL;
+}
+t_quest *find_quest_by_id(t_quest *list, const char *id)
+{
+    if (!list || !list->id || !id)
+        return NULL;
+    while(list)
+    {
+        if (strcmp(list->id, id) == 0)
+                return list;
+        list = list->next;
+    }
+    return NULL;
+}

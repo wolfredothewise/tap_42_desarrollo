@@ -1,103 +1,250 @@
 {
   "spawn_room": "loc.square",
-  "rooms": [
-    {
-      "id": "loc.square",
-      "name": "Village Square",
-      "description": "A cobblestone square with an old stone fountain in the center.",
-      "exits": {
-        "north": "loc.tavern",
-        "east": "loc.alley"
-      },
-      "items": ["item.fountain"],
-      "npcs": ["npc.guard", "npc.merchant"]
-    },
-    {
-      "id": "loc.tavern",
-      "name": "The Rusty Mug",
-      "description": "A smoky tavern smelling of cheap ale and wet dog.",
-      "exits": {
-        "south": "loc.square"
-      },
-      "items": ["item.herbs"],
-      "npcs": []
-    },
-    {
-      "id": "loc.alley",
-      "name": "Dark Alley",
-      "description": "A narrow, damp alley behind the tavern.",
-      "exits": {
-        "west": "loc.square"
-      },
-      "items": [],
-      "npcs": ["npc.goblin"]
-    }
-  ],
   "items": [
     {
-      "id": "item.herbs",
-      "name": "Healing Herbs",
-      "description": "A bundle of pungent green herbs that patch up wounds.",
-      "obtainable": true
-    },
-    {
       "id": "item.fountain",
-      "name": "Stone Fountain",
-      "description": "Too heavy to carry, unless you are an idiot.",
+      "name": "Fuente de piedra",
+      "description": "Una antigua fuente con agua cristalina en el centro de la plaza.",
       "obtainable": false
     },
     {
-      "id": "item.gold_coin",
-      "name": "Gold Coin",
-      "description": "A shiny gold coin stamped with a king's face.",
+      "id": "item.mug",
+      "name": "Jarra de madera",
+      "description": "Una jarra pesada con restos de hidromiel.",
+      "obtainable": true
+    },
+    {
+      "id": "item.old_diary",
+      "name": "Diario polvoriento",
+      "description": "Un cuaderno de cuero con anotaciones sobre las alcantarillas.",
+      "obtainable": true
+    },
+    {
+      "id": "item.bread",
+      "name": "Hogaza de pan",
+      "description": "Pan recién horneado, aún caliente.",
+      "obtainable": true
+    },
+    {
+      "id": "item.iron_sword",
+      "name": "Espada de hierro",
+      "description": "Una hoja sencilla pero bien equilibrada.",
+      "obtainable": true
+    },
+    {
+      "id": "item.herbs",
+      "name": "Hierbas curativas",
+      "description": "Un manojo de hierbas verdes con aroma intenso.",
+      "obtainable": true
+    },
+    {
+      "id": "item.silver_ring",
+      "name": "Anillo de plata",
+      "description": "Un anillo grabado con el sello del gremio de herreros.",
+      "obtainable": true
+    },
+    {
+      "id": "item.notice_board",
+      "name": "Tablón de anuncios",
+      "description": "Carteles de recompensa clavados con dagas oxidadas.",
+      "obtainable": false
+    },
+    {
+      "id": "item.rusty_key",
+      "name": "Llave oxidada",
+      "description": "Una vieja llave de hierro pesado.",
+      "obtainable": true
+    },
+    {
+      "id": "item.guild_badge",
+      "name": "Insignia de la guardia",
+      "description": "Emblema oficial otorgado por proteger la ciudad.",
+      "obtainable": true
+    },
+    {
+      "id": "item.royal_shield",
+      "name": "Escudo reforzado",
+      "description": "Un escudo de acero templado forjado a medida.",
       "obtainable": true
     }
   ],
   "npcs": [
     {
       "id": "npc.guard",
-      "name": "Village Guard",
+      "name": "Guardia de la Plaza",
       "role": "dialogue",
       "hp": 100,
       "damage": 15,
-      "dialogue": "Keep your hands where I can see them, traveler.",
+      "dialogue": "Mantén la calma forastero, los callejones del este son peligrosos.",
       "quest_id": null
     },
     {
-      "id": "npc.merchant",
-      "name": "Old Merchant",
+      "id": "npc.innkeeper",
+      "name": "Tabernero Bardo",
       "role": "quest",
-      "hp": 50,
-      "damage": 0,
-      "dialogue": "I need herbs for my rheumatism. Ask me for a QUEST.",
+      "hp": 80,
+      "damage": 5,
+      "dialogue": "Necesito hierbas curativas del callejón para preparar mis tónicos.",
       "quest_id": "quest.fetch_herbs"
     },
     {
-      "id": "npc.goblin",
-      "name": "Angry Goblin",
-      "role": "enemy",
-      "hp": 30,
-      "damage": 10,
-      "dialogue": "Grrrr! Shiny things are mine!",
+      "id": "npc.merchant",
+      "name": "Mercader Ambulante",
+      "role": "dialogue",
+      "hp": 60,
+      "damage": 4,
+      "dialogue": "Hoy todo está caro, pero mi pan sigue siendo el mejor del reino.",
       "quest_id": null
+    },
+    {
+      "id": "npc.smith",
+      "name": "Herrero Gorin",
+      "role": "quest",
+      "hp": 120,
+      "damage": 20,
+      "dialogue": "Perdí mi anillo de plata en las alcantarillas. Tráemelo y te forjaré un buen escudo.",
+      "quest_id": "quest.fetch_ring"
+    },
+    {
+      "id": "npc.goblin",
+      "name": "Goblin Saqueador",
+      "role": "enemy",
+      "hp": 45,
+      "damage": 12,
+      "dialogue": "¡Grrr! ¡Esta bolsa es mía!",
+      "quest_id": null
+    },
+    {
+      "id": "npc.rat_king",
+      "name": "Rata Gigante",
+      "role": "enemy",
+      "hp": 55,
+      "damage": 14,
+      "dialogue": "¡Squeeek!",
+      "quest_id": null
+    },
+    {
+      "id": "npc.captain",
+      "name": "Capitán de la Guardia",
+      "role": "quest",
+      "hp": 150,
+      "damage": 25,
+      "dialogue": "Un goblin está asaltando el callejón sombrío. Acaba con él.",
+      "quest_id": "quest.kill_goblin"
     }
   ],
   "quests": [
     {
       "id": "quest.fetch_herbs",
-      "description": "Bring Healing Herbs to the Old Merchant.",
+      "description": "Consigue hierbas curativas para el tabernero.",
       "type": "fetch",
       "target_id": "item.herbs",
       "count": 1,
-      "reward_item_id": "item.gold_coin"
+      "reward_item_id": "item.rusty_key"
     },
     {
       "id": "quest.kill_goblin",
-      "description": "Defeat the Angry Goblin in the Dark Alley.",
+      "description": "Elimina al Goblin Saqueador del callejón.",
       "type": "kill",
       "target_id": "npc.goblin",
       "count": 1,
-      "reward_item_id": "item.gold_coin"
+      "reward_item_id": "item.guild_badge"
+    },
+    {
+      "id": "quest.fetch_ring",
+      "description": "Recupera el anillo de plata del herrero en las alcantarillas.",
+      "type": "fetch",
+      "target_id": "item.silver_ring",
+      "count": 1,
+      "reward_item_id": "item.royal_shield"
+    }
+  ],
+  "rooms": [
+    {
+      "id": "loc.square",
+      "name": "Plaza Central",
+      "description": "El corazón del pueblo. Hay salidas hacia los cuatro puntos cardinales.",
+      "exits": {
+        "north": "loc.tavern",
+        "east": "loc.alley",
+        "south": "loc.gate",
+        "west": "loc.market"
+      },
+      "items": ["item.fountain"],
+      "npcs": ["npc.guard"]
+    },
+    {
+      "id": "loc.tavern",
+      "name": "La Taberna del Dragón Cojo",
+      "description": "Un lugar cálido con olor a estofado, madera húmeda y unas escaleras que suben.",
+      "exits": {
+        "south": "loc.square",
+        "up": "loc.inn_upstairs"
+      },
+      "items": ["item.mug"],
+      "npcs": ["npc.innkeeper"]
+    },
+    {
+      "id": "loc.inn_upstairs",
+      "name": "Pasillo de Habitaciones",
+      "description": "Un corredor estrecho y silencioso en el piso superior de la taberna.",
+      "exits": {
+        "down": "loc.tavern"
+      },
+      "items": ["item.old_diary"],
+      "npcs": []
+    },
+    {
+      "id": "loc.market",
+      "name": "Mercado Viejo",
+      "description": "Puestos de madera llenos de telas y especias. Al norte se oye el martillo de una fragua.",
+      "exits": {
+        "east": "loc.square",
+        "north": "loc.blacksmith"
+      },
+      "items": ["item.bread"],
+      "npcs": ["npc.merchant"]
+    },
+    {
+      "id": "loc.blacksmith",
+      "name": "Herrería del Yunque Negro",
+      "description": "El calor del horno golpea tu rostro entre chispas y acero.",
+      "exits": {
+        "south": "loc.market"
+      },
+      "items": ["item.iron_sword"],
+      "npcs": ["npc.smith"]
+    },
+    {
+      "id": "loc.alley",
+      "name": "Callejón Sombrío",
+      "description": "Un pasaje oscuro lleno de cajas rotas y una rejilla abierta hacia el norte.",
+      "exits": {
+        "west": "loc.square",
+        "north": "loc.sewers"
+      },
+      "items": ["item.herbs"],
+      "npcs": ["npc.goblin"]
+    },
+    {
+      "id": "loc.sewers",
+      "name": "Alcantarillas Subterráneas",
+      "description": "Túneles húmedos con agua estancada y eco constante.",
+      "exits": {
+        "south": "loc.alley"
+      },
+      "items": ["item.silver_ring"],
+      "npcs": ["npc.rat_king"]
+    },
+    {
+      "id": "loc.gate",
+      "name": "Puerta Sur de la Muralla",
+      "description": "Dos torres de piedra vigilan el camino principal fuera de la ciudad.",
+      "exits": {
+        "north": "loc.square"
+      },
+      "items": ["item.notice_board"],
+      "npcs": ["npc.captain"]
     }
   ]
 }

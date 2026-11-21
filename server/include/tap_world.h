@@ -102,14 +102,8 @@ t_world *load_world(const char *filepath);
 t_item *find_item_by_id(t_item *list, const char *id);
 t_npc *find_npc_by_id(t_npc *list, const char *id);
 t_room *find_room_by_id(t_room *list, const char *id);
-//parser de entidades y salas static
+t_quest *find_quest_by_id(t_quest *list, const char *id);
 
-// static bool parse_items(cJSON *items_arr, t_world *world);
 
-// static bool parse_npcs(cJSON *npcs_arr, t_world *world);
-
-// static bool parse_quests(cJSON *quests_arr, t_world *world);
-
-// static bool parse_rooms(cJSON *rooms_arr, t_world *world);
 
 #endif
