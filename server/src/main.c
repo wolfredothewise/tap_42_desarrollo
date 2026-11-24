@@ -1,5 +1,7 @@
 #include <stdio.h>
+#include <stdint.h>
 #include "tap_world.h"
+#include "tap_server.h"
 
 
 
@@ -21,5 +23,6 @@ int	main(int argc, char **argv)
 	printf("World loaded! Spawn room: %s (%s)\n",
 		world->spawn_room->name, world->spawn_room->id);
 	destroy_world(world);
-	return (0);
+	init_server_socket(4242);
+	// return (0);
 }
